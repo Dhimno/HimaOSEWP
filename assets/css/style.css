@@ -31,6 +31,7 @@ body {
   inset: 0;
   z-index: 0;
   overflow: hidden;
+  pointer-events: none; 
 }
 .stage video {
   position: absolute;
@@ -40,7 +41,7 @@ body {
   object-fit: cover;
 }
 .overlay {
-  position: absolute;
+  position: relative;
   inset: 0;
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6));
   pointer-events: none;
@@ -112,81 +113,6 @@ nav a {
   max-width: 760px;
 }
 
-/* bottom */
-.bottom-bar {
-  position: fixed;
-  left: 56px;
-  right: 56px;
-  bottom: 28px;
-  z-index: 50;
-  display: flex;
-  align-items: center;
-  gap: 28px;
-  transition: opacity 0.25s ease, transform 0.25s ease;
-}
-.progress-wrap {
-  flex: 1;
-}
-.progress {
-  height: 2px;
-  background: rgba(255, 255, 255, 0.12);
-  border-radius: 2px;
-  position: relative;
-  overflow: hidden;
-}
-.progress > .bar {
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 0;
-  background: var(--accent);
-  transition: width 0.15s linear;
-}
-
-.slides {
-  display: flex;
-  gap: 34px;
-  align-items: center;
-  margin-left: 18px;
-}
-.slide-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  color: var(--muted);
-  font-size: 14px;
-  cursor: pointer;
-  min-width: 160px;
-}
-.dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 999px;
-  background: transparent;
-  border: 2px solid rgba(255, 255, 255, 0.18);
-  display: block;
-}
-.slide-item.active .dot {
-  background: var(--accent);
-  border-color: transparent;
-}
-.slide-title {
-  opacity: 0.95;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 160px;
-  text-align: center;
-}
-
-.bottom-bar.bottom-bar--hidden {
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(24px);
-}
-
 /* responsive */
 @media (max-width: 900px) {
   header {
@@ -215,4 +141,3 @@ header::after {
   z-index: 30;
   pointer-events: none;
 }
-

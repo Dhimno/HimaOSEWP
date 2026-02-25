@@ -1,6 +1,8 @@
 /* Style khusus footer HIMA OSE / landing page */
 
 .site-footer{
+  position: relative; 
+  z-index: 10;
   background:#f7f8fa;
   color:#202937;
   padding:48px 40px 32px;
@@ -71,17 +73,16 @@
   margin-bottom:8px;
   font-size:14px;
   color:#4b5563;
+  transition: 0.2s ease;
 }
-
+.footer-column .footer-nav li:hover{
+  color:#111827;
+  padding-left: 0.7rem;
+}
 .footer-column a{
   color:#4b5563;
   text-decoration:none;
 }
-
-.footer-column a:hover{
-  color:#111827;
-}
-
 .footer-contact li{
   display:flex;
   align-items:flex-start;
@@ -116,10 +117,12 @@
   color:#111827;
   text-decoration:none;
   background:#fff;
+  transition: 0.2s ease;
 }
 
 .social-button:hover{
   border-color:#111827;
+  transform: scale(0.96);
 }
 
 .footer-bottom{

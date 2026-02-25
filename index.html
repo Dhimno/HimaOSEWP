@@ -3,16 +3,20 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Landing — Video Background (Single File)</title>
+    <title>HIMA OSE - UNDIP</title>
 
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/navbar.css" />
     <link rel="stylesheet" href="assets/css/footer.css" />
   </head>
   <body>
+    <!-- NAVBAR -->
+    <div id="navbar"></div>
+
     <!-- VIDEO STAGE -->
     <div class="stage" aria-hidden="true">
       <video id="bgVideo" autoplay muted playsinline preload="auto">
@@ -21,27 +25,6 @@
       </video>
       <div class="overlay"></div>
     </div>
-
-    <!-- HEADER -->
-    <header>
-      <div class="logo" aria-hidden="true">
-        <!-- simple text-logo; ganti dengan SVG jika mau -->
-        PERTAMINA
-      </div>
-
-      <nav aria-label="Main navigation">
-        <a href="#">Tentang Kami</a>
-        <a href="#">Bisnis Kami</a>
-        <a href="#">Hubungan Investor</a>
-        <a href="#">Media & Informasi</a>
-        <a href="#">Keberlanjutan</a>
-      </nav>
-
-      <div class="controls">
-        <a style="color: var(--muted); font-weight: 600" href="#">ID</a>
-        <button class="btn-outline">Registrasi Lembaga Penyalur</button>
-      </div>
-    </header>
 
     <!-- HERO -->
     <main class="hero" role="main">
@@ -52,168 +35,13 @@
       </p>
     </main>
 
-    <!-- Sentinel untuk batas bawah hero (dipakai mengontrol visibilitas bottom-bar) -->
-    <div id="hero-end-sentinel"></div>
-
-    <!-- BOTTOM SLIDER / PROGRESS -->
-    <div class="bottom-bar" aria-hidden="false">
-      <div class="progress-wrap">
-        <div class="progress" aria-hidden="true">
-          <div class="bar" id="progressBar"></div>
-        </div>
-      </div>
-
-      <div class="slides" id="slides"></div>
-    </div>
-
-    <!-- FOOTER ROOT (akan diisi oleh load-footer.js) -->
+    <!-- FOOTER ROOT  -->
     <div id="footer-root"></div>
 
-    <script>
-      // Ganti array slides sesuai file video yang ada di folder 'videos'
-      const slides = [
-        {
-          id: "s1",
-          title: "68 Years of Energy",
-          src: "assets/videos/slide1.mp4",
-          duration: 8000,
-        },
-        {
-          id: "s2",
-          title: "Pertamina Ramadan",
-          src: "assets/videos/slide2.mp4",
-          duration: 8000,
-        },
-        {
-          id: "s3",
-          title: "Komitmen Net Zero Emission",
-          src: "assets/videos/slide3.mp4",
-          duration: 8000,
-        },
-      ];
-
-      const video = document.getElementById("bgVideo");
-      const slidesContainer = document.getElementById("slides");
-      const progressBar = document.getElementById("progressBar");
-      const bottomBar = document.querySelector(".bottom-bar");
-      const heroEnd = document.getElementById("hero-end-sentinel");
-
-      let current = 0;
-      let rafId = null;
-      let startTs = 0;
-      let heroInView = true;
-
-      function renderSlides() {
-        slides.forEach((s, i) => {
-          const div = document.createElement("div");
-          div.className = "slide-item" + (i === 0 ? " active" : "");
-          div.dataset.index = i;
-          div.innerHTML = `<span class="dot" aria-hidden="true"></span><span class="slide-title">${s.title}</span>`;
-          div.addEventListener("click", () => goToSlide(i));
-          slidesContainer.appendChild(div);
-        });
-      }
-
-      function setActiveIndicator(idx) {
-        Array.from(slidesContainer.children).forEach((c, i) => {
-          c.classList.toggle("active", i === idx);
-        });
-      }
-
-      function replaceVideoSource(src) {
-        while (video.firstChild) video.removeChild(video.firstChild);
-        const source = document.createElement("source");
-        source.src = src;
-        source.type = "video/mp4";
-        video.appendChild(source);
-        video.load();
-        // attempt autoplay; catches browsers that block autoplay without user gesture
-        video.play().catch(() => {
-          /* ignore */
-        });
-      }
-
-      function goToSlide(idx) {
-        current = idx % slides.length;
-        const s = slides[current];
-        replaceVideoSource(s.src);
-        setActiveIndicator(current);
-        startProgress(s.duration);
-      }
-
-      function startProgress(duration) {
-        cancelProgress();
-        startTs = performance.now();
-        progressBar.style.width = "0%";
-        (function tick(now) {
-          const elapsed = now - startTs;
-          const pct = Math.min(100, (elapsed / duration) * 100);
-          progressBar.style.width = pct + "%";
-          if (pct >= 100) {
-            goToSlide((current + 1) % slides.length);
-          } else {
-            rafId = requestAnimationFrame(tick);
-          }
-        })(startTs);
-      }
-
-      function cancelProgress() {
-        if (rafId) cancelAnimationFrame(rafId);
-        rafId = null;
-      }
-
-      // pause progress while hovering bottom controls
-      bottomBar.addEventListener("mouseenter", () => cancelProgress());
-      bottomBar.addEventListener("mouseleave", () =>
-        startProgress(slides[current].duration),
-      );
-
-      function handleScrollVisibility() {
-        if (!heroEnd || !bottomBar) return;
-        const rect = heroEnd.getBoundingClientRect();
-        const viewportHeight =
-          window.innerHeight || document.documentElement.clientHeight;
-
-        // Selama sentinel masih berada di bawah batas bawah viewport,
-        // berarti user masih berada di "hero section" (tampilan seperti di gambar).
-        const inHeroRegion = rect.top >= viewportHeight;
-
-        if (inHeroRegion !== heroInView) {
-          heroInView = inHeroRegion;
-          if (heroInView) {
-            bottomBar.classList.remove("bottom-bar--hidden");
-            startProgress(slides[current].duration);
-          } else {
-            bottomBar.classList.add("bottom-bar--hidden");
-            cancelProgress();
-          }
-        }
-      }
-
-      // init
-      renderSlides();
-      goToSlide(0);
-      handleScrollVisibility();
-
-      window.addEventListener("scroll", handleScrollVisibility, {
-        passive: true,
-      });
-
-      // convenience: toggle muted on click (useful in dev)
-      video.addEventListener("click", () => (video.muted = !video.muted));
-
-      // visibility handling
-      document.addEventListener("visibilitychange", () => {
-        if (document.hidden) {
-          cancelProgress();
-        } else if (heroInView) {
-          startProgress(slides[current].duration);
-        }
-      });
-
-      // graceful fallback when video missing
-      video.addEventListener("error", (e) => console.warn("Video error:", e));
-    </script>
+    <!-- FOOTER LOAD -->
+    <script src="js/load-navbar.js"></script>
+    
+    <!-- FOOTER LOAD -->
     <script src="js/load-footer.js"></script>
   </body>
 </html>
