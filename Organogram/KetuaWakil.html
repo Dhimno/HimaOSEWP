@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ketua Wakil - HIMAOSE</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="64x64" href="assets/images/logo/favicon.ico" />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../assets/css/Organogram/KetuWakil.css" />
+    <link rel="stylesheet" href="assets/css/navbar.css" />
+    <link rel="stylesheet" href="assets/css/footer.css" />
+
+    <!-- Feather -->
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <!-- Inline CSS untuk efek scroll reveal + hover card -->
+    <style>
+        /* =========================
+           COLOR SYSTEM
+        ========================= */
+        :root {
+            --gold-soft: #f3d64e;
+            --gold-main: #fcb50f;
+            --blue-dark: #5182cd;
+            --blue-sky: #54c4fc;
+            --blue-soft: #88d8ff;
+            --text-dark: #222;
+        }
+
+        /* =========================
+           RESET & GLOBAL
+        ========================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            background: #f0f8ff;
+            color: var(--text-dark);
+            line-height: 1.8;
+        }
+
+        section {
+            padding: 100px 20px;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+        .profile-hero {
+            height: 50vh;
+            background-color: #000;
+            background-image:
+                linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                url(../assets/images/abstract-coloured-background-with-variety-transparent-raindrops.jpeg);
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            text-align: center;
+            padding: 0 20px;
+            opacity: 0.95;
+        }
+
+        .profile-hero h1 {
+            font-size: 4rem;
+            font-weight: 600;
+            margin-bottom: -5px;
+        }
+
+        .profile-hero h2 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--gold-main);
+        }
+
+        /* =========================
+           ABOUT SECTION CARD
+        ========================= */
+        .section-about-himaose {
+            max-width: 900px;
+            margin: 100px auto;
+            padding: 60px 50px;
+            background: #f0f8ff;
+            position: relative;
+            border-radius: 20px;
+            transition: all 0.4s ease;
+            overflow: hidden;
+        }
+
+        .section-about-himaose::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            padding: 2px;
+            border-radius: 20px;
+            background: linear-gradient(
+                135deg,
+                var(--blue-dark),
+                var(--blue-sky),
+                var(--gold-main)
+            );
+            -webkit-mask:
+                linear-gradient(#fff 0 0) content-box,
+                linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+
+        .section-about-himaose:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(81, 130, 205, 0.2);
+        }
+
+        .section-about-himaose:hover::before {
+            background: linear-gradient(
+                135deg,
+                var(--blue-sky),
+                var(--blue-soft),
+                var(--gold-soft)
+            );
+        }
+
+        .section-about-himaose h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 40px;
+            text-align: center;
+            color: var(--blue-dark);
+        }
+
+        .section-about-himaose p {
+            text-align: justify;
+            font-size: 1rem;
+            color: #444;
+            line-height: 1.9;
+        }
+
+        .section-about-himaose p:first-of-type::first-letter {
+            font-size: 3rem;
+            font-weight: 700;
+            float: left;
+            line-height: 1;
+            padding-right: 8px;
+            color: var(--blue-dark);
+        }
+
+        /* =========================
+           SCROLL REVEAL (CSS-only)
+        ========================= */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .scroll-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+        @media (max-width: 768px) {
+            .profile-hero h1 { font-size: 2.5rem; }
+            .profile-hero h2 { font-size: 1.1rem; }
+            .section-about-himaose {
+                max-width: 100%;
+                padding: 40px 20px;
+                margin: 50px 15px;
+            }
+            .section-about-himaose h2 { font-size: 1.5rem; }
+            .section-about-himaose p { font-size: 0.9rem; text-align: center; }
+        }
+
+        @media (max-width: 480px) {
+            .profile-hero { height: 40vh; }
+            .profile-hero h1 { font-size: 2rem; }
+            .profile-hero h2 { font-size: 0.9rem; }
+            .section-about-himaose { padding: 30px 15px; margin: 40px 15px; border-radius: 15px; }
+            .section-about-himaose h2 { font-size: 1.2rem; }
+            .section-about-himaose p { font-size: 0.85rem; text-align: center; }
+        }
+
+        /* =========================
+           SIMPLE HOVER CARD (optional nanti)
+        ========================= */
+        .hover-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .hover-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    <div id="navbar"></div>
+
+    <!-- HERO -->
+    <main class="profile-hero" role="main">
+        <h1>Ketua & Wakil Ketua</h1>
+        <h2>Kabinet Resonansi Asa 2026</h2>
+    </main>
+
+    <!-- TENTANG KETUA & WAKIL -->
+    <section class="section-about-himaose scroll-reveal">
+        <h2>Tentang Ketua dan Wakil Ketua</h2>
+        <p>
+            Pemimpin tertinggi yang mengarahkan, mengambil kebijakan, dan bertanggung jawab penuh atas operasional
+            organisasi. Sementara itu, wakil ketua bertugas membantu, mendampingi, serta mewakili ketua dalam urusan
+            internal maupun eksternal, terutama saat ketua berhalangan hadir, demi memastikan program kerja berjalan
+            efektif.
+        </p>
+    </section>
+
+    <!-- FOOTER ROOT  -->
+    <div id="footer-root"></div>
+
+    <!-- FOOTER LOAD -->
+    <script src="js/load-navbar.js"></script>
+    <script src="js/load-footer.js"></script>
+
+    <!-- SCROLL REVEAL INLINE -->
+    <script>
+        // scroll reveal tanpa file JS eksternal
+        window.addEventListener("scroll", function() {
+            const reveals = document.querySelectorAll(".scroll-reveal");
+            reveals.forEach(el => {
+                const top = el.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (top < windowHeight - 100) {
+                    el.classList.add("visible");
+                }
+            });
+        });
+
+        // trigger on load juga
+        window.dispatchEvent(new Event('scroll'));
+    </script>
+</body>
+
+</html>
