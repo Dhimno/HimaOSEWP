@@ -12,7 +12,7 @@
 body {
   overflow-x: hidden;
   font-family: "Poppins", sans-serif;
-  font-size: 16px; 
+  font-size: 16px;
   margin: 0;
   background-color: var(--color-white);
   color: var(--color-black);
@@ -108,3 +108,92 @@ body {
   opacity: 1;
 }
 
+/* =========================
+   Responsive Proker
+========================= */
+
+@media (max-width: 1024px) {
+  .proker-header {
+    padding: 90px 20px 70px;
+  }
+  .proker-header h1 {
+    font-size: 2.1rem;
+  }
+  .main-proker {
+    margin: 2rem 1.5rem;
+  }
+  .box-proker.active {
+    width: 28%;
+    padding: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .proker-header {
+    padding: 80px 16px 50px;
+  }
+  .proker-header h1 {
+    font-size: 1.9rem;
+  }
+  .proker-header p {
+    font-size: 0.95rem;
+  }
+
+  .main-proker {
+    margin: 1.5rem 1.25rem 3rem;
+  }
+
+  .card-proker {
+    gap: 0.75rem;
+    flex-wrap: nowrap;
+    overflow-x: auto; /* bisa di-scroll kanan kiri */
+    padding-bottom: 0.25rem;
+    -webkit-overflow-scrolling: touch;
+  }
+  .card-text {
+    padding: 4px 18px;
+    font-size: 0.85rem;
+    white-space: nowrap; /* chip tetap satu baris */
+  }
+
+  .box.active {
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  .box-proker.active {
+    width: 45%;
+    padding: 18px 16px;
+  }
+  .oprec-text h3 {
+    font-size: 0.95rem;
+  }
+  .oprec-text p {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .proker-header {
+    padding: 70px 12px 40px;
+  }
+  .proker-header h1 {
+    font-size: 1.7rem;
+  }
+  .main-proker {
+    margin: 1.25rem 1rem 2.5rem;
+  }
+  .card-proker {
+    gap: 0.5rem;
+  }
+  .card-text {
+    padding: 4px 14px;
+    font-size: 0.8rem;
+  }
+  .box.active {
+    gap: 1.25rem;
+  }
+  .box-proker.active {
+    width: 100%;
+    padding: 16px 14px;
+  }
+}

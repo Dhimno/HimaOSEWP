@@ -16,12 +16,13 @@ document.addEventListener("DOMContentLoaded", function () {
         feather.replace();
       }
 
-      // Sesuaikan link beranda/tentang-kami/kontak tergantung halaman saat ini
+      // Sesuaikan link beranda/tentang-kami/proker/kontak tergantung halaman saat ini
       const isIndexPage =
         window.location.pathname.endsWith("/") ||
         window.location.pathname.endsWith("index.html") ||
         window.location.pathname === "";
       const isKontakPage = window.location.pathname.endsWith("kontak.html");
+      const isProkerPage = window.location.pathname.endsWith("proker.html");
 
       if (isIndexPage) {
         const logoLink = document.querySelector(".logo");
@@ -40,13 +41,16 @@ document.addEventListener("DOMContentLoaded", function () {
         });
       }
 
-      if (isKontakPage) {
+      if (isKontakPage || isProkerPage) {
         const navLinks = document.querySelectorAll(".nav a");
         navLinks.forEach((link) => {
           const href = link.getAttribute("href");
           if (!href) return;
-          if (href === "kontak.html") {
+          if (isKontakPage && href === "kontak.html") {
             // Di halaman kontak, link 'Kontak' cukup scroll ke atas
+            link.setAttribute("href", "#");
+          } else if (isProkerPage && href === "proker.html") {
+            // Di halaman proker, link 'Program Kerja' cukup scroll ke atas
             link.setAttribute("href", "#");
           }
         });

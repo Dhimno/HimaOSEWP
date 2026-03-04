@@ -178,8 +178,13 @@ nav {
   .navbar .nav a::after {
     border-bottom: none;
   }
-  .navbar.scrolled .nav {
-    background-color: rgba(255, 255, 255, 255);
+  .navbar.scrolled .nav,
+  .navbar.scrolled .nav.active {
+    /* Di state scrolled, panel menu tablet pakai latar putih solid */
+    background-color: rgba(255, 255, 255, 1);
+  }
+  .navbar.scrolled .nav a {
+    color: black;
   }
   .navbar.scrolled #hamburger-menu {
     color: rgba(0, 0, 0, 0.85);
