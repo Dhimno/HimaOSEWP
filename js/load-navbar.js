@@ -16,11 +16,12 @@ document.addEventListener("DOMContentLoaded", function () {
         feather.replace();
       }
 
-      // Sesuaikan link beranda/tentang-kami tergantung halaman saat ini
+      // Sesuaikan link beranda/tentang-kami/kontak tergantung halaman saat ini
       const isIndexPage =
         window.location.pathname.endsWith("/") ||
         window.location.pathname.endsWith("index.html") ||
         window.location.pathname === "";
+      const isKontakPage = window.location.pathname.endsWith("kontak.html");
 
       if (isIndexPage) {
         const logoLink = document.querySelector(".logo");
@@ -35,6 +36,18 @@ document.addEventListener("DOMContentLoaded", function () {
             link.setAttribute("href", "#");
           } else if (href === "index.html#about") {
             link.setAttribute("href", "#about");
+          }
+        });
+      }
+
+      if (isKontakPage) {
+        const navLinks = document.querySelectorAll(".nav a");
+        navLinks.forEach((link) => {
+          const href = link.getAttribute("href");
+          if (!href) return;
+          if (href === "kontak.html") {
+            // Di halaman kontak, link 'Kontak' cukup scroll ke atas
+            link.setAttribute("href", "#");
           }
         });
       }
