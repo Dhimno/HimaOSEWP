@@ -38,7 +38,7 @@ section {
   background-color: #000000;
   background-image:
     linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url("../images/abstract-coloured-background-with-variety-transparent-raindrops.jpg.jpeg");
+    url("../images/abstract-coloured-background-with-variety-transparent-raindrops.jpeg");
   background-size: cover;
   background-position: center;
   display: flex;
