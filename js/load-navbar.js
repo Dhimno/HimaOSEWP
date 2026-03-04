@@ -16,6 +16,29 @@ document.addEventListener("DOMContentLoaded", function () {
         feather.replace();
       }
 
+      // Sesuaikan link beranda/tentang-kami tergantung halaman saat ini
+      const isIndexPage =
+        window.location.pathname.endsWith("/") ||
+        window.location.pathname.endsWith("index.html") ||
+        window.location.pathname === "";
+
+      if (isIndexPage) {
+        const logoLink = document.querySelector(".logo");
+        const navLinks = document.querySelectorAll(".nav a");
+        if (logoLink) {
+          logoLink.setAttribute("href", "#");
+        }
+        navLinks.forEach((link) => {
+          const href = link.getAttribute("href");
+          if (!href) return;
+          if (href === "index.html") {
+            link.setAttribute("href", "#");
+          } else if (href === "index.html#about") {
+            link.setAttribute("href", "#about");
+          }
+        });
+      }
+
       // Toogle class active
       const navbarNav = document.querySelector(".nav");
       const navbar = document.querySelector(".navbar");

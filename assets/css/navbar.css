@@ -7,7 +7,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 35px 48px;
+  padding: 24px 48px;
   transition:
     background-color 0.3s ease,
     box-shadow 0.3s ease,
@@ -38,6 +38,7 @@ nav {
   display: flex;
   gap: 26px;
   align-items: center;
+  margin-left: 40px; /* geser grup menu sedikit ke kanan */
 }
 .navbar .nav a {
   color: rgba(255, 255, 255, 0.85);

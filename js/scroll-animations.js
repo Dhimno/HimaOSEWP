@@ -53,9 +53,8 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     {
       threshold: 0.2,
-    }
+    },
   );
 
   fadeSections.forEach((el) => observer.observe(el));
 });
-
