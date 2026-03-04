@@ -1,0 +1,110 @@
+/* Styling Khusus Halaman Kontak */
+:root {
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-yellow-light: #f3d64e;
+  --color-yellow-dark: #fcb50f;
+  --color-blue-dark: #5182cd;
+  --color-blue-light: #54c4fc;
+  --color-blue-pale: #88d8ff;
+}
+
+body {
+  overflow-x: hidden;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px; 
+  margin: 0;
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
+/* Header Section */
+.proker-header {
+  background-color: var(--color-black);
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("../images/abstract-coloured-background-with-variety-transparent-raindrops.jpeg");
+  background-size: cover;
+  background-position: center;
+  color: var(--color-white);
+  text-align: center;
+  padding: 100px 10px;
+  opacity: 0.9;
+}
+
+.proker-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 15x;
+  color: var(--color-yellow-light);
+}
+
+/* Main Section */
+.main-proker {
+  margin: 2.5rem;
+}
+
+.card-proker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.card-text {
+  background: var(--color-yellow-light);
+  padding: 3px 25px;
+  font-size: small;
+  font-weight: 510;
+  border-radius: 2rem;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+  opacity: 0.85;
+  transform: scale(0.95);
+}
+.card-text.active {
+  background: linear-gradient(
+    135deg,
+    var(--color-yellow-dark),
+    var(--color-yellow-light)
+  );
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 15px 35px rgba(79, 124, 255, 0.2);
+  opacity: 1;
+  transform: scale(1);
+}
+.box {
+  display: none;
+  transform: translateY(20px);
+  width: 100%;
+}
+
+.box.active {
+  display: flex;
+  position: relative;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+  justify-content: center;
+  margin-top: 2.5rem;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.box-proker {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.box-proker.active {
+  background: linear-gradient(
+    135deg,
+    rgba(180, 220, 255, 0.6),
+    rgba(200, 240, 255, 0.3)
+  );
+  border: 1px solid rgba(100, 160, 255, 0.4);
+  border-radius: 20px;
+  padding: 24px;
+  width: 20%;
+  opacity: 1;
+}
+
