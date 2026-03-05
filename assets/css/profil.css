@@ -21,7 +21,7 @@
 
 body {
   font-family: "Poppins", sans-serif;
-  background: #f0f8ff;
+  background:   #f0f8ff;
   color: var(--text-dark);
   line-height: 1.8;
 }
@@ -174,9 +174,10 @@ section {
    LOGO MEANING SECTION
 ========================= */
 .section-logo-meaning {
-  max-width: 1200px;
+  max-width: 100%;
   margin: 0 auto;
   padding: 100px 10px;
+  background-color: white;
 }
 
 /* =========================
@@ -187,7 +188,7 @@ section {
   margin: 0 auto;
   padding: 100px 20px;
   text-align: center;
-  background: #ffffff;
+  background: #f0f8ff;
 }
 
 .section-values h2 {
@@ -433,7 +434,7 @@ section {
   max-width: 100%;
   margin: 5px auto;
   padding: 60px 40px;
-  background: #ffffff;
+  background:  #f0f8ff;
   border-radius: 20px;
   position: relative;
   overflow: hidden;
@@ -1005,5 +1006,193 @@ section {
 @media (max-width: 1024px) {
   .logo-card {
     flex: 0 1 calc(33.333% - 27px);
+  }
+}
+
+/* =========================
+   STRUKTUR ORGANISASI SECTION
+========================= */
+.section-structure {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 100px 20px;
+  text-align: center;
+  background:  white;
+}
+
+.section-structure h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 50px;
+  color: var(--blue-dark);
+  position: relative;
+  padding-bottom: 20px;
+}
+
+.section-structure h2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: 2px;
+  background: #f3d64e;
+  margin-bottom: 15px;
+}
+
+.structure-image-container {
+  max-width: 900px;
+  margin: 0 auto 60px;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  border: 2px solid transparent;
+  border-color: #f3d64e;
+  
+}
+
+.structure-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.structure-cards-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 25px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.structure-card {
+  flex: 0 1 calc(16.666% - 22px);
+  max-width: 160px;
+  min-height: 140px;
+  background: linear-gradient(135deg, var(--blue-dark), var(--blue-sky));
+  border-radius: 15px;
+  padding: 25px 15px;
+  text-decoration: none;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  border: 2px solid transparent;
+}
+
+.structure-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(81, 130, 205, 0.3);
+  background: linear-gradient(135deg, var(--gold-main), var(--gold-soft));
+  color: var(--text-dark);
+  border-color: var(--blue-dark);
+}
+
+.structure-card .card-icon {
+  font-size: 2.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.structure-card:hover .card-icon {
+  transform: scale(1.15);
+}
+
+.structure-card h3 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.3;
+  margin: 0;
+}
+
+/* Responsive untuk Struktur Organisasi */
+@media (max-width: 1024px) {
+  .structure-card {
+    flex: 0 1 calc(25% - 20px);
+    max-width: 180px;
+  }
+}
+
+@media (max-width: 768px) {
+  .section-structure {
+    padding: 60px 20px;
+  }
+
+  .section-structure h2 {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+  }
+
+  .structure-image-container {
+    margin-bottom: 40px;
+  }
+
+  .structure-cards-container {
+    gap: 15px;
+  }
+
+  .structure-card {
+    flex: 0 1 calc(33.333% - 10px);
+    max-width: 150px;
+    min-height: 120px;
+    padding: 20px 10px;
+  }
+
+  .structure-card .card-icon {
+    font-size: 1.8rem;
+  }
+
+  .structure-card h3 {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-structure {
+    padding: 50px 15px;
+  }
+
+  .section-structure h2 {
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+  }
+
+  .section-structure h2::after {
+    width: 150px;
+  }
+
+  .structure-image-container {
+    margin-bottom: 30px;
+    border-radius: 10px;
+  }
+
+  .structure-cards-container {
+    gap: 10px;
+  }
+
+  .structure-card {
+    flex: 0 1 calc(50% - 5px);
+    max-width: none;
+    min-height: 100px;
+    padding: 15px 10px;
+    border-radius: 12px;
+  }
+
+  .structure-card .card-icon {
+    font-size: 1.5rem;
+  }
+
+  .structure-card h3 {
+    font-size: 0.7rem;
   }
 }
